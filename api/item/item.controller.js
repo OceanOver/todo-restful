@@ -2,10 +2,24 @@ var mongoose = require('mongoose');
 var Item = mongoose.model('Item');
 
 /*
+ * items of user
+ */
+function itemsOfUser(userId,callback) {
+    return Item.findAsync({'owner_id':userId}).then(function (users) {
+        callback(null,users);
+    }).catch(function (err) {
+        callback(err);
+    });
+}
+var Promise = require('bluebird');
+var itemsOfUserAsync = Promise.promisify(itemsOfUser);
+
+/*
  * item list
  */
 exports.list = function(req, res, next) {
-    Item.countAsync().then(function(count) {
+    var userId = req.user._id;
+    Item.countAsync({'owner_id':userId}).then(function(count) {
         if (count == 0) {
             var result = { 'state': 1001, 'msg': '暂无内容' };
             return res.status(200).json(result);
@@ -15,9 +29,9 @@ exports.list = function(req, res, next) {
             console.log(typeof(type));
             var condition = {};
             if (type === '1') {
-                condition = { 'completed': false };
+                condition = {'owner_id':userId, 'completed': false };
             } else if (type === '2') {
-                condition = { 'completed': true };
+                condition = {'owner_id':userId,  'completed': true };
             }
             // _id 生成算法中已经包含了创建的时间，按时间倒序
             Item.findAsync(condition).then(function(items) {
@@ -34,6 +48,7 @@ exports.list = function(req, res, next) {
  * add item
  */
 exports.addItem = function(req, res, next) {
+    var owner_id = req.user._id;
     var content = req.body.content;
     var note = req.body.note ? req.body.note : '';
     var error_msg;
@@ -44,6 +59,7 @@ exports.addItem = function(req, res, next) {
         return res.status(422).send({ error_msg: error_msg });
     }
     var item = new Item({
+        owner_id:owner_id,
         content: content,
         note: note
     });
@@ -110,9 +126,13 @@ exports.clearItem = function(req, res, next) {
 * clear all item
 */
 exports.clearAll = function(req, res, next) {
+    var userId = req.user._id;
     var completed = req.body.completed;
+    if (!completed) {
+        return res.status(400).json({state:1002,message:'请求参数格式有误'});
+    }
     //batch update
-    Item.update({}, { $set: { completed: completed } }, { multi: true }).then(function(raw) {
+    Item.updateAsync({owner_id:userId}, { $set: { completed: completed } }, { multi: true }).then(function(raw) {
         var result = { 'state': 1000, 'msg': '完成任务！',list:raw };
         return res.status(200).json(result);
     }).catch(function(err) {
@@ -150,9 +170,10 @@ exports.deleteItem = function(req, res, next) {
  * delete complete item
  */
 exports.deleteComplete = function(req, res, next) {
-    Item.countAsync({ completed: true }).then(function(count) {
+    var userId = req.user._id;
+    Item.countAsync({owner_id:userId, completed: true }).then(function(count) {
         if (count > 0) {
-            return Item.removeAsync({ completed: true }).then(function() {
+            return Item.removeAsync({owner_id:userId, completed: true }).then(function() {
                 var result = { 'state': 1000, 'msg': '已删除完成任务！' };
                 return res.status(200).json(result);
             }).catch(function(err) {
@@ -171,7 +192,8 @@ exports.deleteComplete = function(req, res, next) {
  * item left
  */
 exports.itemLeft = function(req, res, next) {
-    Item.countAsync({ completed: false }).then(function(count) {
+    var userId = req.user._id;
+    Item.countAsync({owner_id:userId, completed: false }).then(function(count) {
         var result = { 'state': 1000, 'msg': '请求成功！', 'count': count };
         return res.status(200).json(result);
     }).catch(function(err) {

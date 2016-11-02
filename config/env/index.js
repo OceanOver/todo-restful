@@ -14,6 +14,9 @@ var params = {
                 safe: true
             }
         }
+    },
+    session:{
+        secret:'todo-secret'
     }
 };
 

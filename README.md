@@ -20,5 +20,6 @@ visit `http://localhost:3000/index.html`
 
 客户端使用Amaze UI搭建，对应`public/web`,构建开发工作流参见[amazeui/starter-kit](https://github.com/amazeui/starter-kit/tree/browserify)
 
-<img src='./todo.png'>
+<img src='./login.png'>
 
+<img src='./todo.png'>

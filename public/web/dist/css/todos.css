@@ -19,12 +19,14 @@
   margin: 0;
 }
 .content-header-all,
+.todos-content-textInput,
 .todos-title-textInput,
 .content-header-add,
 .content-footer-delete {
   height: 100%;
   border: 0;
 }
+.todos-content-input,
 .todos-title-input {
   padding: 0;
   height: 100%;
