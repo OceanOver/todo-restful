@@ -4,10 +4,6 @@
   "description": "todo restful server",
   "author": "YT",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
   "scripts": {
     "start": "node app.js"
   },
