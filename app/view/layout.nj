@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name='description' content='{{ config.description }}'>
+
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/libs/bootstrap/font/css/open-iconic.css">
+    <link rel="stylesheet" href="/public/libs/toastr.min.css">
+    <link rel="stylesheet" href="/public/stylesheets/todos.min.css">
+
+    <title>{{ config.name }}</title>
+</head>
+
+<body name={{ pageName }}>
+<content class="page-content">
+    {% block body %}{% endblock %}
+</content>
+
+<footer class="page-footer">
+    Powered by &nbsp;
+    <a href="https://oceanover.github.io">OceanOver</a>&nbsp; with
+    <span class="heart">&nbsp;♡</span>
+</footer>
+
+<script src="/public/libs/jquery.min.js"></script>
+<script src="/public/libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="/public/libs/nunjucks.min.js"></script>
+<script src="/public/javascripts/todo.min.js"></script>
+</body>
+
+</html>

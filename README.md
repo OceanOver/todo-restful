@@ -1,28 +1,37 @@
-# todo-restful
-a demo with front-end and server-side (inspire by todoMVC)
+# ssr-todo
 
-### 简介
-todo-restful 是使用 Node.js + MongoDB + Express + 客户端框架开发的前后端分离的todo项目.
+todo demo
 
-点击访问[Demo](http://121.42.186.45:8800)
+## QuickStart
 
-### 环境
+<!-- add docs here for user -->
+
+see [egg docs](https://eggjs.org/en/intro/quickstart.html) for more detail.
+
+### Environment Dependencies
+
+- redis
+- mysql
+
+#### macOS Install
+
+```bash
+brew install redis mysql
+brew services start redis
+brew services start mysql
 ```
-node.js 6.9.1
-mognodb 3.4.1
-express 4.0+
-redis 3.2.2
-```
-### 运行
-```
-$ git clone git@github.com:OceanOver/todo-restful.git
-$ cd todo-restful
-$ npm install
-```
-visit `http://localhost:3000/index.html`
 
-客户端使用Amaze UI搭建，对应`public/client`,构建开发工作流参见[amazeui/starter-kit](https://github.com/amazeui/starter-kit/tree/browserify)
+### Development
 
-<img src='./login.png'>
+```bash
+npm i
+npm run dev
+open http://localhost:7001/
+```
 
-<img src='./todo.png'>
+### npm scripts
+
+- Use `npm run asset_serve` to enable html hot reload.
+- Use `npm run asset_build` to build static file.
+- Use `npm run lint` to check code style.
+- Use `npm test` to run unit test.

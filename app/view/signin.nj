@@ -1,0 +1,39 @@
+{% extends "layout.nj" %}
+
+{% block body %}
+
+    <content class="sign">
+        <header class="login-header">
+            <img src="/public/images/todoLogo.svg"/>
+            <span>TODOS</span>
+        </header>
+
+        <section class="login-main">
+            <div id="login-form">
+                <p class="form-title">LOGIN</p>
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control login-username" id="username" placeholder="输入用户名">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control login-password" id="password" placeholder="输入密码">
+                </div>
+                <a class="to-register" href="/register">注册 >> </a>
+                <br>
+                <div class="button-wrapper">
+                    <button class="btn btn-primary login-button">
+                    <span class="oi login-icon" data-glyph="account-login" title="account-login"
+                          aria-hidden="true">&nbsp;&nbsp;</span>
+                        <span>登 录</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <p class="section-subscribe">
+            Never put off what you can do today until tomorrow
+        </p>
+    </content>
+
+{% endblock %}

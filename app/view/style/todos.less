@@ -1,0 +1,281 @@
+@BaseColor: #5AB1F0;
+
+body {
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+.text-primary, .btn-primary {
+    background-color: @BaseColor;
+    border-color: @BaseColor;
+
+    &:hover {
+        background-color: #2696f0;
+        border-color: #2696f0;
+    }
+}
+
+.page-content {
+    height: 100vh;
+    margin-bottom: -60px;
+    padding-bottom: 100px;
+    overflow: scroll;
+}
+
+.page-footer {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #999;
+    border-top: 1px solid #e1e1e1;
+    z-index: 10;
+    background-color: white;
+    font-weight: 300;
+
+    a {
+        color: @BaseColor;
+    }
+}
+
+.sign, .register {
+    .login-header {
+        height: 280px;
+        padding: 70px 15px 150px;
+        background-color: #59B1F0;
+        margin-bottom: -90px;
+        text-align: center;
+
+        img {
+            width: 60px;
+            height: 60px;
+            margin-top: -5px;
+        }
+
+        span {
+            display: inline-block;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            height: 60px;
+            line-height: 60px;
+        }
+    }
+
+    .login-main,
+    .register-main {
+        background: white;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 60px;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
+        padding: 20px;
+
+        .form-title {
+            font-size: 22px;
+        }
+
+        .to-register {
+            color: @BaseColor;
+            font-size: 14px;
+        }
+
+        .button-wrapper {
+            text-align: center;
+
+            .login-button,
+            .register-button {
+                margin-top: 25px;
+                font-size: 18px;
+                font-weight: 500;
+                width: 150px;
+                background-color: #2BD68A;
+                border-color: #2BD68A;
+
+                .login-icon {
+                    display: none;
+                    font-size: 16px;
+                    color: white;
+                    font-weight: 300;
+                }
+
+                &:hover {
+                    background-color: #02d67a;
+                    border-color: #02d67a;
+
+                    .login-icon {
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .register-button:hover {
+                .login-icon {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    .section-subscribe {
+        text-align: center;
+        font-weight: 300;
+        color: @BaseColor;
+    }
+}
+
+.todos {
+    margin: 100px auto 40px;
+    max-width: 860px;
+    border: 1px solid #DDDDDD;
+
+    .form-control {
+        color: #4c4d50;
+        font-weight: 300;
+    }
+
+    .todos-header {
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
+        font-size: 32px;
+        border-bottom: 1px solid #DDDDDD;
+        background-color: #F5F5F5;
+    }
+
+    .content-header {
+        margin: 0;
+        height: 44px;
+        border-bottom: 1px solid #DDDDDD;
+        .content-header-all,
+        .todos-title-input,
+        .todos-title-textInput,
+        .content-header-add {
+            height: 100%;
+            border: 0;
+            padding: 0;
+        }
+        .todos-title-textInput {
+            height: 42px;
+            padding: 0 15px;
+        }
+    }
+
+    ul,li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-main {
+        .main-item {
+            border: 0;
+            border-bottom: 1px solid #DDDDDD;
+            height: 44px;
+            .item-close,
+            .item-input,
+            .item-delete{
+                height: 44px;
+                line-height: 44px;
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+            }
+            .item-close {
+                text-align: center;
+            }
+            .item-input {
+                border-left: 1px solid #DDDDDD;
+                border-right: 1px solid #DDDDDD;
+                .todos-content-textInput {
+                    height: 42px;
+                    border: 0;
+                }
+            }
+            .item-delete {
+                text-align: center;
+                .close-icon {
+                    cursor: pointer;
+                    color: #c0c2c8;
+                    font-size: 24px;
+                    text-align: center;
+                    &:hover {
+                        color: #828388;
+                    }
+                }
+            }
+        }
+    }
+
+    .todos-action {
+        height: 40px;
+        margin: 10px 0;
+        padding: 0 15px;
+
+        .remain-item,
+        .state-wrapper,
+        .delete-wrapper {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .remain-item {
+            text-align: right;
+        }
+
+        .state-wrapper {
+            text-align: center;
+
+            .content-footer-state {
+                .state-item {
+                    font-size: 14px;
+                    width: 100px;
+                }
+                .active {
+                    background-color: #2696f0;
+                    border-color: #2696f0;
+                }
+            }
+        }
+
+        .delete-wrapper {
+            text-align: left;
+
+            .content-footer-delete {
+                &:hover {
+                    cursor: pointer;
+                    color: @BaseColor;
+                }
+            }
+        }
+    }
+
+    .todos-footer {
+        height: 50px;
+        text-align: center;
+        border-top: 1px solid #DDDDDD;
+        background-color: #F5F5F5;
+
+        .footer-logout {
+            display: inline-block;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+
+            .footer-username {
+                font-size: 20px;
+            }
+
+            .logout-icon {
+                font-size: 18px;
+
+                &:hover {
+                    color: @BaseColor;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

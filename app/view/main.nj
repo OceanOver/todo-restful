@@ -1,0 +1,49 @@
+{% extends "layout.nj" %}
+
+{% block body %}
+
+    <section class="todos">
+        <header class="todos-header">
+            Todos
+        </header>
+
+        <div class="row content-header">
+            <button type="button" class="col-1 btn-primary content-header-all">
+                全选
+            </button>
+            <div class="col-9 todos-title-input">
+                <input type="text" class="form-control todos-title-textInput" placeholder="输入待办事件">
+            </div>
+            <button type="button" class="col-2 btn-primary content-header-add">添加</button>
+        </div>
+
+        <ul class="content-main">
+            <!-- template -->
+        </ul>
+
+        <div class="row todos-action">
+            <p class="col-3 remain-item">剩0项</p>
+
+            <div class="col-6 state-wrapper">
+                <div class="btn-group content-footer-state" role="group">
+                    <button type="button" class="btn btn-primary active state-item" buttonIndex=0>全部</button>
+                    <button type="button" class="btn btn-primary state-item" buttonIndex=1>未完成</button>
+                    <button type="button" class="btn btn-primary state-item" buttonIndex=2>已完成</button>
+                </div>
+            </div>
+
+            <div class="col-3 delete-wrapper">
+                <a class="content-footer-delete">删除已完成</a>
+            </div>
+        </div>
+
+        <footer class="todos-footer">
+            <div class="footer-logout">
+                <span class="footer-username">username</span>&nbsp;&nbsp;
+                <span class="oi logout-icon" data-glyph="account-logout" title="account-logout"
+                      aria-hidden="true"></span>
+            </div>
+        </footer>
+    </section>
+
+{% endblock %}
